@@ -4,17 +4,19 @@ O3 = #-O3
 CXXFLAGS = -Wall -Wextra -g $(O3) 
 LDFLAGS = #-lm -pg
 SRC = $(wildcard main*.cpp)
-BIN = $(patsubst %.cpp, %, $(SRC))
+SRC2 = $(wildcard *.cpp)
+BIN = $(patsubst %.cpp, bin/%, $(SRC))
+BIN2 =  $(patsubst %.cpp, obj/%.o, $(SRC2))
+BIN3 =  $(patsubst %.cpp, %.cpp, $(SRC))
 
-all : $(BIN)
+all : $(BIN2) all2
 
-main% : obj/Dvector.o  obj/main%.o
-	$(CXX) -o bin/$@ $^ $(CXXFLAGS) $(LDFLAGS)
+all2 : $(BIN)
 
-obj/main%.o : main%.cpp
-	$(CXX) -c $^ $(CXXFLAGS) $(LDFLAGS) -o $@
+bin/main% : obj/Dvector.o  obj/main%.o
+	$(CXX) -o $@ $^ $(CXXFLAGS) $(LDFLAGS)
 
-obj/Dvector.o : Dvector.cpp
+obj/%.o : %.cpp
 	$(CXX) -c $^ $(CXXFLAGS) $(LDFLAGS) -o $@
 
 .PHONY : clean
