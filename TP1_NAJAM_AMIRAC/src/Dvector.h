@@ -31,7 +31,7 @@ class Dvector
         int size() const;
         /** Methode qui construit le vecteur à partir de la loi normal sur [0,1]
         */
-        int fillRandomly();
+        void fillRandomly();
         /** Affiche le vecteur.
             @param str : un flux.
         */

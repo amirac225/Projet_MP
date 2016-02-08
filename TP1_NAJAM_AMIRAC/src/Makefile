@@ -6,12 +6,11 @@ LDFLAGS = #-lm -pg
 SRC = $(wildcard main*.cpp)
 SRC2 = $(wildcard *.cpp)
 BIN = $(patsubst %.cpp, bin/%, $(SRC))
-BIN2 =  $(patsubst %.cpp, obj/%.o, $(SRC2))
-BIN3 =  $(patsubst %.cpp, %.cpp, $(SRC))
+OBJ =  $(patsubst %.cpp, obj/%.o, $(SRC2))
 
-all : $(BIN2) all2
+all : $(OBJ) bin
 
-all2 : $(BIN)
+bin : $(BIN)
 
 bin/main% : obj/Dvector.o  obj/main%.o
 	$(CXX) -o $@ $^ $(CXXFLAGS) $(LDFLAGS)

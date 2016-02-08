@@ -29,8 +29,7 @@ Dvector::Dvector(string str) : m_double(0), m_taille(0)
         }
         m_taille--;
         /* Fermeture puis reouverture du fichier et construcion du vecteur */
-//        file.close();
-//        file.open(str.c_str());
+        file.clear();
         file.seekg(0,ios::beg);
         m_double = new double[m_taille];
         for(int i = 0; i < m_taille; i++)
@@ -44,7 +43,6 @@ Dvector::Dvector(string str) : m_double(0), m_taille(0)
         m_double = new double[m_taille]; 
     }
 }
-
 /* Initialisation d'un vecteur à partir d'une taille et d'un argument facultatif */
 /* Necessite que taille >= 0 */
 Dvector::Dvector(int taille, double arg) : m_double(0), m_taille(taille)
@@ -89,7 +87,7 @@ void Dvector::display(std::ostream& str) const
 {
     for(int i = 0; i < m_taille; i++)
     {
-        str /*<< fixed << setprecision(2) */<< m_double[i] << endl;
+        str << m_double[i] << endl;
     }
 }
 
@@ -100,14 +98,13 @@ int Dvector::size() const
 }
 
 /* Rempli le vecteur selon la loi uniforme sur [0,1] */
-int Dvector::fillRandomly()
+void Dvector::fillRandomly()
 {
     srand(time(0));
     for(int i = 0; i < m_taille; i++)
     {
         m_double[i] = rand()/(double)RAND_MAX;
     }
-    return 0;
 }
 
 /* Destructeur */
