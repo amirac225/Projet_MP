@@ -2,25 +2,20 @@
 
 #include <iostream>
 #include "Dvector.h"
-
-using namespace std;
-
+#include <assert.h>
+#include <sstream>
 int main()
 {
-  Dvector vector01(10,7.23);
+  Dvector vector01(4,7.23);
   Dvector vector02(vector01);
- 
-  cout << "Premier vecteur :\n";
-  vector01.display(cout);
-
-  cout << "Second vecteur :\n"; 
-  vector02.display(cout);
-
-  cout << "Modification du premier vecteur :\n";
-  vector01.fillRandomly();
-  vector01.display(cout);
-
-  cout << "Verification du second vecteur :\n";
-  vector02.display(cout);
+  assert(vector01.size() == 4) ; 
+  std::stringstream str01 ;
+  std::stringstream str02 ; 
+  vector01.display(str01) ; 
+  assert(str01.str() == "7.23\n7.23\n7.23\n7.23\n") ; 
+  assert(vector02.size() == 4) ;
+  vector02.display(str02) ; 
+  assert(str02.str() == "7.23\n7.23\n7.23\n7.23\n") ;
+  std::cout << "OK\n" ; 
   return 0;
 }
