@@ -113,3 +113,35 @@ Dvector::~Dvector()
     cout << "Destruction du vecteur" << endl;
     delete [] m_double;
 }
+
+
+Dvector operator + (const Dvector &v , const double &a) {
+	Dvector v1 = Dvector(v);
+	v1 += a ; 
+	return v1 ; 
+}	
+Dvector operator - (const Dvector &v , const double &a) {
+	Dvector v1 = Dvector(v);
+	v1 -= a ; 
+	return v1 ; 
+}	
+Dvector operator * (const Dvector &v , const double &a) {
+	Dvector v1 = Dvector(v);
+	v1 *= a ; 
+	return v1 ; 
+}	
+Dvector operator / (const Dvector &v , const double &a) {
+	Dvector v1 = Dvector(v);
+	v1 /= a ; 
+	return v1 ; 
+}	
+Dvector operator + (const Dvector &v1 , const Dvector &v2){
+	Dvector v3 = Dvector(v1);
+	v3 += v2 ; 
+	return v3 ; 
+}	 
+Dvector operator - (const Dvector &v1 , const Dvector &a2) {
+	Dvector v3 = Dvector(v1);
+	v3 += v2 ; 
+	return v3 ; 
+}	
