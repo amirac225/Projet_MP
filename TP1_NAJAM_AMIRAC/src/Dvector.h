@@ -25,7 +25,6 @@ class Dvector
         /** Constructeur qui construit un vecteur à partir du fichier str.
         */
         Dvector(std::string str);
-        //Dvector& operator=(Dvector const& dvector);
         /** @return La taille du vecteur.
         */
         int size() const;

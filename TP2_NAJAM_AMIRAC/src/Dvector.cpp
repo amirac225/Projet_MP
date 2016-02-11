@@ -3,19 +3,21 @@
 #include <cstdlib>
 #include <fstream>
 
+using namespace std;
+
 /* Constructeur par défaut surchargé */
 Dvector::Dvector() : m_double(0), m_taille(0)
 {
-    std::cout << "Appel du constructeur par defaut" << std::endl;
+    cout << "Appel du constructeur par defaut" << endl;
     m_double = new double[m_taille];
 }
 
 /* Initialisation d'un vecteur à partir d'un fichier se trouvant à str */
-Dvector::Dvector(std::string str) : m_double(0), m_taille(0)
+Dvector::Dvector(string str) : m_double(0), m_taille(0)
 {
-    std::cout << "Appel du constructeur faisant appel au fichier " << str << std::endl;
+    cout << "Appel du constructeur faisant appel au fichier " << str << endl;
     /* Ouverture du fichier */
-    std::ifstream file(str.c_str());
+    ifstream file(str.c_str());
     if(file)
     {
         double tmp;
@@ -26,9 +28,9 @@ Dvector::Dvector(std::string str) : m_double(0), m_taille(0)
             file >> tmp;
         }
         m_taille--;
-        /* Fermeture puis reouverture du fichier et construcion du vecteur */
+        /* Fermeture puis reouverture du fichier et construction du vecteur */
         file.clear();
-        file.seekg(0,std::ios::beg);
+        file.seekg(0,ios::beg);
         m_double = new double[m_taille];
         for(int i = 0; i < m_taille; i++)
         {
@@ -45,7 +47,7 @@ Dvector::Dvector(std::string str) : m_double(0), m_taille(0)
 /* Necessite que taille >= 0 */
 Dvector::Dvector(int taille, double arg) : m_double(0), m_taille(taille)
 {
-    std::cout << "Appel du constructeur initialisant à partir d'une taille et d'un argument " << std::endl;
+    cout << "Appel du constructeur initialisant à partir d'une taille et d'un argument " << endl;
     m_double = new double[m_taille];
     for(int i = 0; i < m_taille; i++)
     {
@@ -56,7 +58,7 @@ Dvector::Dvector(int taille, double arg) : m_double(0), m_taille(taille)
 /* Surcharge du constructeur de recopie */
 Dvector::Dvector(Dvector const& dvector) : m_double(0), m_taille(dvector.m_taille)
 {
-    std::cout << "Appel du constructeur de recopie " << std::endl;
+    cout << "Appel du constructeur de recopie " << endl;
     m_double = new double[m_taille];
     for(int i = 0; i < m_taille; i++)
     {
@@ -64,12 +66,28 @@ Dvector::Dvector(Dvector const& dvector) : m_double(0), m_taille(dvector.m_taill
     }
 }
 
+/* Surcharge de l'operateur d'affectation puisqu'on a surchargé un constructeur de recopie */
+ Dvector& Dvector::operator=(Dvector const& dvector)
+{
+    if(this != &dvector)
+    {
+        m_taille = dvector.m_taille;
+        delete [] m_double;
+        m_double = new double[m_taille];
+        for(int i = 0; i < m_taille; i++)
+        {
+            m_double[i] = dvector.m_double[i];
+        }
+    }
+    return *this;
+}
+
 /* Affichage du vecteur */
 void Dvector::display(std::ostream& str) const
 {
     for(int i = 0; i < m_taille; i++)
     {
-        str << m_double[i] << std::endl;
+        str << m_double[i] << endl;
     }
 }
 
@@ -92,38 +110,6 @@ void Dvector::fillRandomly()
 /* Destructeur */
 Dvector::~Dvector()
 {
-    std::cout << "Destruction du vecteur" << std::endl;
+    cout << "Destruction du vecteur" << endl;
     delete [] m_double;
 }
-
-
-Dvector operator + (const Dvector &v , const double &a) {
-	Dvector v1 = Dvector(v);
-	v1 += a ; 
-	return v1 ; 
-}	
-Dvector operator - (const Dvector &v , const double &a) {
-	Dvector v1 = Dvector(v);
-	v1 -= a ; 
-	return v1 ; 
-}	
-Dvector operator * (const Dvector &v , const double &a) {
-	Dvector v1 = Dvector(v);
-	v1 *= a ; 
-	return v1 ; 
-}	
-Dvector operator / (const Dvector &v , const double &a) {
-	Dvector v1 = Dvector(v);
-	v1 /= a ; 
-	return v1 ; 
-}	
-Dvector operator + (const Dvector &v1 , const Dvector &v2){
-	Dvector v3 = Dvector(v1);
-	v3 += v2 ; 
-	return v3 ; 
-}	 
-Dvector operator - (const Dvector &v1 , const Dvector &a2) {
-	Dvector v3 = Dvector(v1);
-	v3 += v2 ; 
-	return v3 ; 
-}	

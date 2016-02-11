@@ -2,15 +2,18 @@
 
 #include <iostream>
 #include "Dvector.h"
+#include <sstream>
+#include <assert.h>
 
-using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
-  Dvector vector01("/home/neo/Ensimag/S4/Informatique/MP/C++ Workspace/TP1_NAJAM/src/tests/tp1_test2.txt");
+  std::stringstream str;
+  Dvector vector01(argv[1]);
  
-  cout << "Premier vecteur :\n";
-  vector01.display(cout);
-
+  vector01.display(str);
+//  cout << str.str();
+  assert(str.str()=="2.4\n2.5\n2.6\n");
+  std::cout << "OK\n";
   return 0;
 }
