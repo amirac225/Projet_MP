@@ -34,7 +34,7 @@ class Dvector
         Dvector& operator/=(double const& dvector);
         Dvector& operator+=(Dvector const& dvector);
         Dvector& operator-=(Dvector const& dvector);
-        double& operator[](int const& i);
+        double& operator()(int const& i) const;
         /** Methode qui modifie la taille du vecteur en question 
         */
         void resize(int const& taille, ...);

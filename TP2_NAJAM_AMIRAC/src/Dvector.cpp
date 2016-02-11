@@ -86,7 +86,7 @@ Dvector& Dvector::operator=(Dvector const& dvector)
 }
 
 /* Operateur d'accession : */
-double& Dvector::operator[](int const& i)
+double& Dvector::operator()(int const& i)
 {
     return m_double[i];
 }
