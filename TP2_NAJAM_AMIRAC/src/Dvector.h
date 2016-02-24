@@ -14,6 +14,15 @@
 
 class Dvector
 {
+        /**
+            Tableau vecteur alloué dynamiquement lors de la construction de l'objet.
+        */
+        double* m_double;
+        /**
+            Taille du vecteur.
+        */
+        int m_taille;
+	
     public:
         /** Constructeur par defaut surchargé. \n
             Initialise la taille et le pointeur à 0.
@@ -34,13 +43,16 @@ class Dvector
         Dvector& operator/=(double const& dvector);
         Dvector& operator+=(Dvector const& dvector);
         Dvector& operator-=(Dvector const& dvector);
-        double& operator()(int const& i) const;
+        double& operator()(int const& i);
         /** Methode qui modifie la taille du vecteur en question 
         */
         void resize(int const& taille, ...);
         /** @return La taille du vecteur.
         */
         int size() const;
+	/** @return Les coordonnes du vecteur 
+	*/
+	double* coord() const ; 
         /** Methode qui construit le vecteur à partir de la loi normal sur [0,1]
         */
         void fillRandomly();
@@ -50,19 +62,12 @@ class Dvector
         */
         void display(std::ostream& str) const;
         friend std::ostream& operator<<(std::ostream &flux, Dvector const& dvector);
+	friend std::istream& operator<<(std::istream &flux, Dvector & dvector);
         friend bool operator==(Dvector const& dvector1, Dvector const& dvector2);
         /** Destructeur.
         */
         virtual ~Dvector();
-    protected:
-        /**
-            Tableau vecteur alloué dynamiquement lors de la construction de l'objet.
-        */
-        double* m_double;
-        /**
-            Taille du vecteur.
-        */
-        int m_taille;
+
 
 };
 

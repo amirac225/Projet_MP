@@ -231,7 +231,19 @@ Dvector operator/(Dvector const& dvector2, double const& dvector1)
 
 ostream& operator<<(ostream &flux, Dvector const& dvector)
 {
+    int size = dvector.m_taille ;
+    flux << "Vecteur de coodonnees : " ; 
+    for (int i = 0 ; i < size ; i++){
+	flux << dvector.m_double[i]<<endl ; 
+    }
     return flux;
+}
+
+istream& operator>>(istream &flux, Dvector & dvector){
+    for (int i = 0 ; i < dvector.size() ; i++){
+	flux >> dvector.coord()[i] ;
+    }	
+    return flux ;
 }
 
 /* Les methodes : */
@@ -250,7 +262,13 @@ int Dvector::size() const
 {
     return m_taille;
 }
-
+/* *************************************** */
+/* ********PROPOSITION******************** */
+/* *************************************** */
+double* Dvector::coord() const
+{
+    return m_double;
+}
 /* Rempli le vecteur selon la loi uniforme sur [0,1] */
 void Dvector::fillRandomly()
 {
@@ -286,6 +304,9 @@ void Dvector::resize(int const& taille, ...)
     m_double = z_double;
     m_taille = taille;
 }
+
+/* Proposition */
+
 
 /* Destructeur */
 Dvector::~Dvector()
