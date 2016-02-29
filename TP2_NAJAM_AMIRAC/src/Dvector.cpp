@@ -233,9 +233,20 @@ Dvector operator/(Dvector const& dvector2, double const& dvector1)
 
 ostream& operator<<(ostream &flux, Dvector const& dvector)
 {
+    int size = dvector.m_taille ;
+    flux << "Vecteur de coodonnees : " ; 
+    for (int i = 0 ; i < size ; i++){
+	flux << dvector.m_double[i]<<endl ; 
+    }
     return flux;
 }
 
+istream& operator>>(istream &flux, Dvector & dvector){
+    for (int i = 0 ; i < dvector.size() ; i++){
+	flux >> dvector.m_double[i];
+    }	
+    return flux ;
+}
 /* Les methodes : */
 
 /* Affichage du vecteur */
@@ -256,6 +267,11 @@ int Dvector::size() const
 /* Rempli le vecteur selon la loi uniforme sur [0,1] */
 void Dvector::fillRandomly()
 {
+    static bool init = false ;
+    if (!init){
+        init = true ; 
+        srand(time(0)) ; 
+    }
     for(int i = 0; i < m_taille; i++)
     {
         m_double[i] = rand()/(double)RAND_MAX;

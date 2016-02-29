@@ -6,15 +6,23 @@
 /* Constructeur par défaut surchargé */
 Dvector::Dvector() : m_double(0), m_taille(0)
 {
+<<<<<<< HEAD
     srand(time(0));
+=======
+>>>>>>> 42c43a30952d81c5e0a13daa61bc8496a490d97c
     std::cout << "Appel du constructeur par defaut" << std::endl;
     m_double = new double[m_taille];
 }
 
 /* Initialisation d'un vecteur à partir d'un fichier se trouvant à str */
+<<<<<<< HEAD
 Dvector::Dvector(std::string const& str) : m_double(0), m_taille(0)
 {
     srand(time(0));
+=======
+Dvector::Dvector(std::string str) : m_double(0), m_taille(0)
+{
+>>>>>>> 42c43a30952d81c5e0a13daa61bc8496a490d97c
     std::cout << "Appel du constructeur faisant appel au fichier " << str << std::endl;
     /* Ouverture du fichier */
     std::ifstream file(str.c_str());
@@ -47,7 +55,10 @@ Dvector::Dvector(std::string const& str) : m_double(0), m_taille(0)
 /* Necessite que taille >= 0 */
 Dvector::Dvector(int taille, double arg) : m_double(0), m_taille(taille)
 {
+<<<<<<< HEAD
     srand(time(0));
+=======
+>>>>>>> 42c43a30952d81c5e0a13daa61bc8496a490d97c
     std::cout << "Appel du constructeur initialisant à partir d'une taille et d'un argument " << std::endl;
     m_double = new double[m_taille];
     for(int i = 0; i < m_taille; i++)
@@ -59,7 +70,10 @@ Dvector::Dvector(int taille, double arg) : m_double(0), m_taille(taille)
 /* Surcharge du constructeur de recopie */
 Dvector::Dvector(Dvector const& dvector) : m_double(0), m_taille(dvector.m_taille)
 {
+<<<<<<< HEAD
     srand(time(0));
+=======
+>>>>>>> 42c43a30952d81c5e0a13daa61bc8496a490d97c
     std::cout << "Appel du constructeur de recopie " << std::endl;
     m_double = new double[m_taille];
     for(int i = 0; i < m_taille; i++)
@@ -98,3 +112,35 @@ Dvector::~Dvector()
     std::cout << "Destruction du vecteur" << std::endl;
     delete [] m_double;
 }
+
+
+Dvector operator + (const Dvector &v , const double &a) {
+	Dvector v1 = Dvector(v);
+	v1 += a ; 
+	return v1 ; 
+}	
+Dvector operator - (const Dvector &v , const double &a) {
+	Dvector v1 = Dvector(v);
+	v1 -= a ; 
+	return v1 ; 
+}	
+Dvector operator * (const Dvector &v , const double &a) {
+	Dvector v1 = Dvector(v);
+	v1 *= a ; 
+	return v1 ; 
+}	
+Dvector operator / (const Dvector &v , const double &a) {
+	Dvector v1 = Dvector(v);
+	v1 /= a ; 
+	return v1 ; 
+}	
+Dvector operator + (const Dvector &v1 , const Dvector &v2){
+	Dvector v3 = Dvector(v1);
+	v3 += v2 ; 
+	return v3 ; 
+}	 
+Dvector operator - (const Dvector &v1 , const Dvector &a2) {
+	Dvector v3 = Dvector(v1);
+	v3 += v2 ; 
+	return v3 ; 
+}	

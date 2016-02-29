@@ -5,4 +5,3 @@ Dvector operator+ (Dvector a, Dvector b) :
 Dvector operator+ (const Dvector &a, const Dvector &b) :
 - Le passage se fait par référence, il n'y a pas de recopie.
 - Les arguments sont susceptible d'être modifié à l'interieur de l'operateur mais le const fait que le compilateur levera une erreur si c'est le cas.
-
