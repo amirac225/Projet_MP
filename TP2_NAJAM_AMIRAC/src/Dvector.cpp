@@ -93,11 +93,8 @@ Dvector& Dvector::operator=(Dvector const& dvector)
     if(this != &dvector)
     {
         int dim = dvector.m_taille;
-	m_double = new double[dim] ;
-	for (int i = 0 ; i < m_taille; i++){
-	memcpy(&m_double[i], &dvector.m_double[i], sizeof(double)) ;
-	}
-	 
+    	m_double = new double[dim] ;
+	   memcpy(m_double, dvector.m_double, dim*sizeof(double)) ;
     }
     
     return *this;

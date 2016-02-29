@@ -2,8 +2,6 @@
 #define DVECTOR_H
 
 #include <iostream>
-#include <string>
-#include <ostream>
 #include <cstring>
 #include <stdarg.h>
 
