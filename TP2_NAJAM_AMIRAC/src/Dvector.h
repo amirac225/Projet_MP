@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <cstring>
-#include <stdarg.h>
 
 /** @brief Classe Dvector modelisant un vecteur réel de taille m_taille.
     @author NAJA Mohamed Reda
@@ -44,7 +43,7 @@ class Dvector
         double& operator()(int const& i) const;
         /** Methode qui modifie la taille du vecteur en question 
         */
-        void resize(int const& taille, ...);
+        void resize(int const& taille, double const& init = 0);
         /** @return La taille du vecteur.
         */
         int size() const;
