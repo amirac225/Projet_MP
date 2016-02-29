@@ -3,24 +3,22 @@
 #include <cstdlib>
 #include <fstream>
 
-using namespace std;
-
 /* Les Constructeurs : */
 
 /* Constructeur par défaut surchargé */
 Dvector::Dvector() : m_double(0), m_taille(0)
 {
     srand(time(0));
-    cout << "Appel du constructeur par defaut" << endl;
+    std::cout << "Appel du constructeur par defaut" << std::endl;
     m_double = new double[m_taille];
 }
 
 /* Initialisation d'un vecteur à partir d'un fichier se trouvant à str */
-Dvector::Dvector(string const& str) : m_double(0), m_taille(0)
+Dvector::Dvector(std::string const& str) : m_double(0), m_taille(0)
 {
-    cout << "Appel du constructeur faisant appel au fichier " << str << endl;
+    std::cout << "Appel du constructeur faisant appel au fichier " << str << std::endl;
     /* Ouverture du fichier */
-    ifstream file(str.c_str());
+    std::ifstream file(str.c_str());
     if(file)
     {
         double tmp;
@@ -33,7 +31,7 @@ Dvector::Dvector(string const& str) : m_double(0), m_taille(0)
         m_taille--;
         /* Fermeture puis reouverture du fichier et construction du vecteur */
         file.clear();
-        file.seekg(0,ios::beg);
+        file.seekg(0,std::ios::beg);
         m_double = new double[m_taille];
         for(int i = 0; i < m_taille; i++)
         {
@@ -50,7 +48,7 @@ Dvector::Dvector(string const& str) : m_double(0), m_taille(0)
 /* Necessite que taille >= 0 */
 Dvector::Dvector(int taille, double arg) : m_double(0), m_taille(taille)
 {
-    cout << "Appel du constructeur initialisant à partir d'une taille et d'un argument " << endl;
+    std::cout << "Appel du constructeur initialisant à partir d'une taille et d'un argument " << std::endl;
     m_double = new double[m_taille];
     for(int i = 0; i < m_taille; i++)
     {
@@ -61,7 +59,7 @@ Dvector::Dvector(int taille, double arg) : m_double(0), m_taille(taille)
 /* Surcharge du constructeur de recopie */
 Dvector::Dvector(Dvector const& dvector) : m_double(0), m_taille(dvector.m_taille)
 {
-    cout << "Appel du constructeur de recopie " << endl;
+    std::cout << "Appel du constructeur de recopie " << std::endl;
     m_double = new double[m_taille];
     for(int i = 0; i < m_taille; i++)
     {
@@ -250,17 +248,17 @@ Dvector operator/(Dvector const& dvector2, double const& dvector1)
     return dvector;
 }
 
-ostream& operator<<(ostream &flux, Dvector const& dvector)
+std::ostream& operator<<(std::ostream &flux, Dvector const& dvector)
 {
     int size = dvector.m_taille ;
     flux << "Vecteur de coodonnees : " ; 
     for (int i = 0 ; i < size ; i++){
-	flux << dvector.m_double[i]<<endl ; 
+	flux << dvector.m_double[i]<<std::endl ; 
     }
     return flux;
 }
 
-istream& operator>>(istream &flux, Dvector & dvector){
+std::istream& operator>>(std::istream &flux, Dvector & dvector){
     for (int i = 0 ; i < dvector.size() ; i++){
 	flux >> dvector.m_double[i];
     }	
@@ -273,7 +271,7 @@ void Dvector::display(std::ostream& str) const
 {
     for(int i = 0; i < m_taille; i++)
     {
-        str << m_double[i] << endl;
+        str << m_double[i] << std::endl;
     }
 }
 
@@ -642,6 +640,6 @@ void Dvector::resize(int const& taille, double const& init)
 /* Destructeur */
 Dvector::~Dvector()
 {
-    cout << "Destruction du vecteur" << endl;
+    std::cout << "Destruction du vecteur" << std::endl;
     delete [] m_double;
 }
