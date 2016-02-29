@@ -1,13 +1,11 @@
 #ifndef DVECTOR_H
 #define DVECTOR_H
 
-#include <iomanip>
 #include <iostream>
 #include <string>
 
 /** @brief Classe Dvector modelisant un vecteur réel de taille m_taille.
     @author NAJA Mohamed Reda
-    @date Janvier 2016
     */
 
 class Dvector
@@ -24,14 +22,13 @@ class Dvector
         Dvector(Dvector const& dvector);
         /** Constructeur qui construit un vecteur à partir du fichier str.
         */
-        Dvector(std::string str);
-        //Dvector& operator=(Dvector const& dvector);
+        Dvector(std::string const& str);
         /** @return La taille du vecteur.
         */
         int size() const;
         /** Methode qui construit le vecteur à partir de la loi normal sur [0,1]
         */
-        int fillRandomly();
+        void fillRandomly();
         /** Affiche le vecteur.
             @param str : un flux.
         */

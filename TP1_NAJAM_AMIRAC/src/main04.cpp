@@ -1,9 +1,9 @@
-// Test de size :
+// Test de size et du constructeur de recopie :
 
 #include <iostream>
 #include "Dvector.h"
-
-using namespace std;
+#include <sstream>
+#include <assert.h>
 
 int main()
 {
@@ -11,18 +11,22 @@ int main()
   Dvector vector02(vector01);
   Dvector vector03;
   Dvector vector04(1,-5.32);
+  std::stringstream str1;
+  std::stringstream str2;
  
-  cout << "Taille du premier vecteur :\n";
-  cout << vector01.size() << endl;
+  assert(vector01.size() == 10);
+  vector01.display(str1);
+  vector02.display(str2);
 
-  cout << "Taille du second vecteur :\n"; 
-  cout << vector02.size() << endl;
+  assert(str1.str() == str2.str());
 
-  cout << "Taille du troisieme vecteur :\n";
-  cout << vector03.size() << endl;
+  assert(vector02.size() == 10);
 
-  cout << "Taille du quatrieme vecteur :\n"; 
-  cout << vector04.size() << endl;
+  assert(vector03.size() == 0);
+
+  assert(vector04.size() == 1);
+
+  std::cout << "OK\n";
 
   return 0;
 }

@@ -8,7 +8,8 @@ using namespace std;
 int main()
 {
   cout << "Premiere écriture \n";
-  Dvector x; x = Dvector(3,1.);
+  Dvector x = Dvector(3,1.);
+  cout << "plouf !" << endl;
   x.display(cout);
   cout << "Deuxieme écriture :\n";
   Dvector y = Dvector(3,1.);
