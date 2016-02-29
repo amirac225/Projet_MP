@@ -70,21 +70,36 @@ Dvector::Dvector(Dvector const& dvector) : m_double(0), m_taille(dvector.m_taill
 /* La surcharges d'opérateurs : */
 
 /* Surcharge de l'operateur d'affectation puisqu'on a surchargé un constructeur de recopie */
+// Dvector& Dvector::operator=(Dvector const& dvector)
+// {
+//     if(this != &dvector)
+//     {
+//         m_taille = dvector.m_taille;
+//         delete [] m_double;
+//         m_double = new double[m_taille];
+//         for(int i = 0; i < m_taille; i++)
+//         {
+//             m_double[i] = dvector.m_double[i];
+//         }
+//     }
+//     return *this;
+// }
+//Deuxième implémentation de l'operateur
+//d'affectation
 Dvector& Dvector::operator=(Dvector const& dvector)
 {
     if(this != &dvector)
     {
-        m_taille = dvector.m_taille;
-        delete [] m_double;
-        m_double = new double[m_taille];
-        for(int i = 0; i < m_taille; i++)
-        {
-            m_double[i] = dvector.m_double[i];
-        }
+        int dim = dvector.m_taille;
+	m_double = new double[dim] ;
+	for (int i = 0 ; i < m_taille; i++){
+	memcpy(&m_double[i], &dvector.m_double[i], sizeof(double)) ;
+	}
+	 
     }
+    
     return *this;
 }
-
 /* Operateur d'accession : */
 double& Dvector::operator()(int const& i)
 {
@@ -118,6 +133,7 @@ Dvector& Dvector::operator+=(Dvector const& dvector)
     }
     return *this;
 }
+
 
 /* Operateur d'ajout : */
 Dvector operator+(Dvector const& dvector1, Dvector const& dvector2)
@@ -272,7 +288,11 @@ double* Dvector::coord() const
 /* Rempli le vecteur selon la loi uniforme sur [0,1] */
 void Dvector::fillRandomly()
 {
-    srand(time(0));
+    static bool init = false ;
+    if (!init){
+	init = true ; 
+	srand(time(0));
+    }
     for(int i = 0; i < m_taille; i++)
     {
         m_double[i] = rand()/(double)RAND_MAX;
