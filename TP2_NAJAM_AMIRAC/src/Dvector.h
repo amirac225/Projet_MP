@@ -78,7 +78,8 @@ class Dvector
 	   Surcharge de l'opérateur d'accession 
 	   @param l'indice de la coordonnée à laquelle on veut accéder
 	 */
-	double& operator()(int const& i) const;
+	double& operator()(int i);
+    double const& operator()(int i) const;
         /** Methode qui modifie la taille du vecteur en question 
         */
         void resize(int const& taille, double const& init = 0);
