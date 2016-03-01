@@ -6,9 +6,9 @@ check :
 	make -C src/
 
 doc : 
-	make -C doc/
+	make -C docu/
 
 clean :
 	make clean -C src/
-	make clean -C doc/
+	make clean -C docu/
 
