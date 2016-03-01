@@ -5,4 +5,4 @@ html/index.html :
 
 .PHONY : clean
 clean : 
-	rm -r -f html
+	rm -r -f html latex
