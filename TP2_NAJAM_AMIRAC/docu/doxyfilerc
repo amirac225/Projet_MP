@@ -107,7 +107,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = /home/neo/Ensimag/S4/Informatique/MP/Projet_MP/TP2_NAJAM_AMIRAC/src
+INPUT                  = ../src
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
