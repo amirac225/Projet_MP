@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-  const Dvector vector(3,5.);
+  Dvector vector(3,5.);
   vector(0) = 2.;
   assert(vector(0) == 2);
   double b = vector(1);
