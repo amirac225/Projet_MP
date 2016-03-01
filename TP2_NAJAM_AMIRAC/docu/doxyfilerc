@@ -4,13 +4,13 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
-PROJECT_NAME           = TP1
+PROJECT_NAME           = Dvector
 PROJECT_NUMBER         = 
-PROJECT_BRIEF          = "Documentation de la classe Dvector du TP1"
+PROJECT_BRIEF          = 
 PROJECT_LOGO           = 
 OUTPUT_DIRECTORY       = 
 CREATE_SUBDIRS         = NO
-OUTPUT_LANGUAGE        = French
+OUTPUT_LANGUAGE        = English
 BRIEF_MEMBER_DESC      = YES
 REPEAT_BRIEF           = YES
 ABBREVIATE_BRIEF       = "The $name class" \
@@ -107,7 +107,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = "/home/neo/Ensimag/S4/Informatique/MP/C++ Workspace/TP1_NAJAM/src"
+INPUT                  = /home/neo/Ensimag/S4/Informatique/MP/Projet_MP/TP2_NAJAM_AMIRAC/src
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
@@ -244,7 +244,7 @@ EXTRA_SEARCH_MAPPINGS  =
 #---------------------------------------------------------------------------
 # Configuration options related to the LaTeX output
 #---------------------------------------------------------------------------
-GENERATE_LATEX         = NO
+GENERATE_LATEX         = YES
 LATEX_OUTPUT           = latex
 LATEX_CMD_NAME         = latex
 MAKEINDEX_CMD_NAME     = makeindex
