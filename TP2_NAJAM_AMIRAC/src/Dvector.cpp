@@ -8,7 +8,6 @@
 /* Constructeur par défaut surchargé */
 Dvector::Dvector() : m_double(0), m_taille(0)
 {
-    srand(time(0));
     std::cout << "Appel du constructeur par defaut" << std::endl;
     m_double = new double[m_taille];
 }
@@ -90,11 +89,11 @@ Dvector& Dvector::operator=(Dvector const& dvector)
 {
     if(this != &dvector)
     {
-        int dim = dvector.m_taille;
-    	m_double = new double[dim] ;
-	   memcpy(m_double, dvector.m_double, dim*sizeof(double)) ;
+        m_taille = dvector.m_taille;
+        delete [] m_double;
+        m_double = new double[m_taille] ;
+	    memcpy(m_double, dvector.m_double, m_taille*sizeof(double)) ;
     }
-    
     return *this;
 }
 /* Operateur d'accession : */
@@ -112,6 +111,10 @@ double const& Dvector::operator()(int i) const
 /* Operateur de comparaison : */
 bool operator==(Dvector const& dvector1, Dvector const& dvector2)
 {
+    if(dvector1.size() != dvector2.size())
+    {
+        return false;
+    }
     for(int i = 0; i < dvector1.size(); i++)
     {
         if(dvector1.m_double[i] != dvector2.m_double[i])
@@ -242,7 +245,7 @@ Dvector& Dvector::operator/=(double const& dvector)
 }
 
 Dvector operator/(Dvector const& dvector2, double const& dvector1)
-{
+{ 
     Dvector dvector(dvector2);
     dvector /= dvector1;
     return dvector;
@@ -317,325 +320,6 @@ void Dvector::resize(int const& taille, double const& init)
     m_double = z_double;
     m_taille = taille;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* Destructeur */
 Dvector::~Dvector()
