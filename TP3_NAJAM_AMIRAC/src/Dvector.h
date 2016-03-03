@@ -13,10 +13,11 @@ class Dvector : public Darray
     */
     Dvector(int taille, double arg = 0.0);
     /** Constructeur de recopie. */
-    Dvector(Darray const& dvector);
+    Dvector(Dvector const& dvector);
     /** Constructeur qui construit un vecteur à partir du fichier str.
     */
     Dvector(std::string const& str);
+    virtual ~Dvector();
 };
 
 /**
