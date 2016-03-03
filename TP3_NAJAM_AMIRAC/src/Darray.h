@@ -11,15 +11,7 @@
 
 class Darray
 {
-        /**
-            Tableau vecteur alloué dynamiquement lors de la construction de l'objet.
-	    Les elements du tableau sont des doubles
-        */
-        double* m_double;
-        /**
-            Taille du vecteur.
-        */
-        int m_taille;
+
 	
     public:
         /** Constructeur par defaut surchargé. \n
@@ -110,6 +102,16 @@ class Darray
         /** Destructeur.
         */
         virtual ~Darray();
+    protected:
+	/**
+       Tableau vecteur alloué dynamiquement lors de la construction de l'objet.
+	Les elements du tableau sont des doubles
+    */
+    	double* m_double;
+    /**
+        Taille du vecteur.
+    */
+    	int m_taille;
 };
 /**
 Surcharge l'operateur +
@@ -197,4 +199,5 @@ Darray operator-(Darray const& dvector);
 @return un boolean : true si les vecteurs ne sont pas égaux et false sinon 
 */
 bool operator!=(Darray const& dvector1, Darray const& dvector2);
+
 #endif // DARRAY_H
