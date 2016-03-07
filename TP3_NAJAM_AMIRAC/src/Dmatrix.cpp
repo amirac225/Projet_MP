@@ -85,3 +85,9 @@ int Dmatrix::lines() {
 int Dmatrix::columns() {
   return this->m ;
 }
+
+/* TODO */
+
+Dmatrix& Dmatrix::transpose() {
+  return *this ; 
+}

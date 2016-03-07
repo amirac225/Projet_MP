@@ -16,7 +16,7 @@ class Dmatrix : public Darray{
         */
   Dmatrix(int nb_lines, int nb_col, double arg = 0.0);
         /** Constructeur de recopie. */
-  Dmatrix(Dmatrix const& dvector);
+  Dmatrix(Dmatrix const& matrix);
 
 
 
@@ -30,7 +30,7 @@ class Dmatrix : public Darray{
 	  @param Vector 
 	  @return On récupérer le Dvector correspondant au produit de la matrice par le vecteur V
 	**/
-	Dvector operator * (const Dvector & Vector) ;
+	Dvector operator * (const Dvector & vector) ;
 
 	/**
 	   @brief Acceder au nombre de lignes de la matrice 
@@ -50,7 +50,7 @@ class Dmatrix : public Darray{
 	   @param Matrix la matrice dans le membre à droite 
 	   @return 
 	**/
-	Dmatrix& operator = (const Dmatrix& Matrix) ; 
+	Dmatrix& operator = (const Dmatrix& matrix) ; 
 	
 	/**
 	  @brief multiplication d'une matrice par une autre matrice 
@@ -58,7 +58,7 @@ class Dmatrix : public Darray{
 	  @return On récupérer la Dmatrix correspondant au produit des deux matrices.
 	**/
 	
-	Dmatrix operator * (const Dmatrix & Matrix) ;
+	Dmatrix operator * (const Dmatrix & matrix) ;
 
 	/** 
 	    @brief Extraction d'une ligne de la matrice 
@@ -90,7 +90,11 @@ class Dmatrix : public Darray{
 	   @return le coefficient (i,j) de la matrice. 
 	**/
 	const double& operator() (int i, int j) const ;
-
+	/** 
+	    @brief Transposition d'une matrice carrée
+	    @return Matrice transposée
+	**/
+	Dmatrix & transpose() ; 
 
 };
 
